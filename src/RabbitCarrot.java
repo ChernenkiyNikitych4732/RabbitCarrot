@@ -4,13 +4,12 @@ public class RabbitCarrot {
     static class Field {
         int carrotWeight;
         int count;
-
         Field(int carrotWeight, int count) {
             this.carrotWeight = carrotWeight;
             this.count = count;
         }
     }
-
+    
     public static void main(String[] args) {
         List<Field> fields = Arrays.asList(
                 new Field(1, Integer.MAX_VALUE),
@@ -23,11 +22,9 @@ public class RabbitCarrot {
         int maxHops = 10;
         int maxWeightPerHop = 5;
         int totalWeight = 0;
-
         for (int i = 0; i < maxHops; i++) {
             int currentWeight = 0;
             List<Field> tempFileds = new ArrayList<>();
-
             for (Field field : fields) {
                 while (field.count > 0 && currentWeight + field.carrotWeight <= maxWeightPerHop) {
                     currentWeight += field.carrotWeight;
@@ -38,7 +35,6 @@ public class RabbitCarrot {
 
             totalWeight += currentWeight;
             System.out.println("Hop " + (i + 1) + ": Собрано " + currentWeight + " кг");
-
             for (Field tempField : tempFileds) {
                 for (Field field : fields) {
                     if (field.carrotWeight == tempField.carrotWeight) {
@@ -47,7 +43,6 @@ public class RabbitCarrot {
                 }
             }
         }
-
         System.out.println("Общий вес собранной моркови: " + totalWeight + "кг");
     }
 }
